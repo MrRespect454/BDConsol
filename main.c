@@ -11,6 +11,7 @@ typedef struct
     int id;
     char name[MAX_NAME_LENGTH];
     int age;
+
 } Student;
 
 #define MAX_SUBJECT_LENGTH 50
@@ -46,7 +47,7 @@ int main()
         printf("5. Добавить предмет\n");
         printf("6. Удалить предмет\n");
         printf("7. Изменить данные предмета\n");
-        printf("8. Просмотреть все данные о студенте\n");
+        printf("8. Просмотреть все предметы\n");
         printf("9. Выход из программы\n");
         scanf("%d", &expression);
         switch (expression)
