@@ -4,7 +4,7 @@
 
 #define MAX_NAME_LENGTH 100
 #define MAX_SUBJECT_LENGTH 50
-#define DATABASE_FILE "database.txt"
+#define DATABASE_FILE "student.txt"
 
 typedef struct
 {
@@ -62,7 +62,7 @@ int main()
             edit_student_details();
             break;
         case 4:
-            view_all_students();
+            allstudents();
             break;
         case 5:
             add_subject();
