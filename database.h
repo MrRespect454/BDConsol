@@ -1,24 +1,35 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 
-struct Employee
+#define MAX_NAME_LENGTH 100
+#define MAX_SUBJECT_LENGTH 50
+#define STUDENT_FILE "student.txt"
+#define SUBJECT_FILE "subject.txt"
+#define TEMP_FILE "temporary.txt"
+#define RAND_MAX 2147483647
+
+typedef struct
 {
     int id;
-    char first_name[50];
-    char last_name[50];
-    double salary;
-};
+    char name[MAX_NAME_LENGTH];
+    int age;
+} Student;
 
-typedef struct Employee Employee;
+typedef struct
+{
+    int id;
+    char name[MAX_SUBJECT_LENGTH];
+    int credits;
+    int student_id;
+} Subject;
 
-void db_init(Employee **db, int *capacity, int *size);
-int db_add(Employee *db, int *size, int capacity, Employee new_employee);
-int db_delete(Employee *db, int *size, int id);
-void db_print(const Employee *db, int size);
-Employee *db_find_by_id(const Employee *db, int size, int id);
-Employee *db_find_by_name(const Employee *db, int size, const char *last_name);
-
-int db_save_to_file(const Employee *db, int size, const char *filename);
-int db_load_from_file(Employee **db, int *size, int *capacity, const char *filename);
+// Объявления функций
+void addStudent();
+void deleteStudent();
+void edit_student_details();
+void allstudents();
+void add_subject();
+void delete_subject();
+void allsubject();
 
 #endif

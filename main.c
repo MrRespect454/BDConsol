@@ -1,55 +1,32 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#define MAX_NAME_LENGTH 100
-#define MAX_SUBJECT_LENGTH 50
-#define DATABASE_FILE "student.txt"
-
-typedef struct
-{
-    int id;
-    char name[MAX_NAME_LENGTH];
-    int age;
-
-} Student;
-
-#define MAX_SUBJECT_LENGTH 50
-
-typedef struct
-{
-    int id;
-    char name[MAX_SUBJECT_LENGTH];
-    int credits;
-    int student_id;
-} Subject;
-
-void addStudent();
-void deleteStudent();
-void edit_student_details();
-void view_all_students();
-void view_all_student_details();
-
-void add_subject();
-void delete_subject();
-void edit_subject_details();
+#include "database.h"
 
 int main()
 {
     int expression, flag = 0;
     while (flag != 1)
     {
-        printf("Выберите действие для работы с базой данных\n");
+        printf("\n=== Система управления студентами и предметами ===\n");
         printf("1. Добавить студента\n");
         printf("2. Удалить студента\n");
         printf("3. Изменить данные студента\n");
         printf("4. Просмотреть всех студентов\n");
         printf("5. Добавить предмет\n");
         printf("6. Удалить предмет\n");
-        printf("7. Изменить данные предмета\n");
-        printf("8. Просмотреть все предметы\n");
-        printf("9. Выход из программы\n");
-        scanf("%d", &expression);
+        printf("7. Просмотреть все предметы\n");
+        printf("8. Выход из программы\n");
+        printf("Выберите действие: ");
+
+        if (scanf("%d", &expression) != 1)
+        {
+            printf("Ошибка ввода! Введите число.\n");
+            while (getchar() != '\n')
+                ;
+            continue;
+        }
+
         switch (expression)
         {
         case 1:
@@ -71,17 +48,14 @@ int main()
             delete_subject();
             break;
         case 7:
-            edit_subject_details();
+            allsubject();
             break;
         case 8:
-            view_all_student_details();
-            break;
-        case 9:
             flag = 1;
+            printf("Выход из программы...\n");
             break;
         default:
-            printf("программа сработала не корректно\nВведите число из списка\n");
-            // flag = 1;
+            printf("Неверный выбор! Введите число от 1 до 8.\n");
             break;
         }
     }
